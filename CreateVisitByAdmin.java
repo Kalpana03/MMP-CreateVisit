@@ -45,6 +45,7 @@ public class CreateVisitByAdmin {
 
 		options = new AdminPatientOptions(driver);
 		options.createVisit("fever");
+		options.logout();
 	}
 
 	@AfterMethod

@@ -1,8 +1,9 @@
 package com.mmp.admin.patients;
 
 import java.util.List;
-import java.util.Set;
+//import java.util.Set;
 
+//import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,41 +34,38 @@ public class AdminPatientOptions {
 		// select the first provider
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//button[@id='opener'])[1]"))).click();
 
-		// Get all the window handles
-		Set<String> handles = driver.getWindowHandles();
+		driver.switchTo().frame("myframe");
 
-		// Switch the focus to the pop up window
-		for (String handle : handles) {
-			if (!handle.equals(parentWindowHandle)) {
-				driver.switchTo().window(handle);
-				// click on Date input box
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("datepicker"))).click();
+		// click on Date input box
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("datepicker"))).click();
 
-				// Click on a date in the calendar
-				wait.until(ExpectedConditions
-						.visibilityOfElementLocated(By.xpath("(//div[@id='ui-datepicker-div']//a)[4]"))).click();
-				Thread.sleep(3000);
-				// Select time - click on Time
-				Select time = new Select(driver.findElement(By.id("time")));
-				List<WebElement> times = time.getOptions();
-				times.get(1).click();
-				Thread.sleep(3000);
-				// Click on Continue
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ChangeHeatName"))).click();
+		// Click on a date in the calendar
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@id='ui-datepicker-div']//a)[4]")))
+				.click();
+		Thread.sleep(3000);
+		// Select time - click on Time
+		Select time = new Select(driver.findElement(By.id("time")));
+		List<WebElement> times = time.getOptions();
+		times.get(1).click();
+		Thread.sleep(3000);
+		// Click on Continue
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ChangeHeatName"))).click();
 
-				// Write the symptoms
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("textarea"))).clear();
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("textarea"))).sendKeys(symptoms);
-				// click on submit
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@value='Submit']"))).click();
-				Thread.sleep(3000);
-				// click on logout
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='  Logout ']")))
-						.click();
+		// Write the symptoms
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("textarea"))).clear();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("textarea"))).sendKeys(symptoms);
+		// click on submit
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@value='Submit']"))).click();
+		Thread.sleep(3000);
+		
+	}
+	
+	public void logout(){
+		// click on logout
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='  Logout ']"))).click();
 
-			}
-		}
-
+		
+		
 	}
 
 }
