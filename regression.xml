@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="createvisitfromadmin">
+	<test name="CreateVisitByAdmin">
+		<parameter name="url"
+			value="http://96.84.175.78/MMP-Release2-Integrated-Build.6.8.000/"></parameter>
+		<parameter name="adminid" value="padmajap"></parameter>
+		<parameter name="adminpwd" value="Mmpadmin2017"></parameter>
+		<parameter name="searchpatient" value="123121234"></parameter>
+
+		<classes>
+			<class name="com.mmp.createvisit.CreateVisitByAdminTest"></class>
+		</classes>
+	</test>
+</suite>

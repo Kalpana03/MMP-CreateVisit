@@ -1,4 +1,4 @@
-package com.mmp.admin.patients;
+package com.mmp.createvisit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
